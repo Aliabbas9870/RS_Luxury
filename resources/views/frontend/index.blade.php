@@ -7,6 +7,13 @@
     <header>
 
     </header>
+@foreach($site->pages as $page)
+    <section id="{{ $page->slug }}">
+        <h2>{{ $page->title }}</h2>
+        {!! $page->content !!}
+    </section>
+@endforeach
+
 
     @yield('content')
 @if($site->faqs->count())
