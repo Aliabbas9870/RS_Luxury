@@ -11,10 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sites', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+       Schema::create('sites', function (Blueprint $table) {
+    $table->id();
+    $table->string('slug')->unique(); // e.g. rs1, rs2
+    $table->string('name');           // Unique site name
+    $table->string('logo')->nullable();
+    $table->string('header_image')->nullable();
+    $table->text('footer_text')->nullable();
+    $table->timestamps();
+});
+
     }
 
     /**

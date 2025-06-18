@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-    Schema::create('pages', function (Blueprint $table) {
+      Schema::create('faqs', function (Blueprint $table) {
     $table->id();
-    $table->foreignId('site_id')->constrained('sites')->onDelete('cascade');
-    $table->string('title');
-    $table->string('slug');
-    $table->text('content');
+    $table->foreignId('site_id')->constrained()->onDelete('cascade'); // Connect to site
+    $table->string('question');
+    $table->text('answer');
     $table->timestamps();
 });
 
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pages');
+        Schema::dropIfExists('faqs');
     }
 };
